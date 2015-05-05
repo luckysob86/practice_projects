@@ -1,7 +1,7 @@
 <?php
 
 /* 5-5-15
- * practice project from thecodeplater.com
+ * practice project from thecodeplayer.com
  */
 
 ?>
