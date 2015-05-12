@@ -9,7 +9,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>JS Bin</title>
+  <title>android_logo</title>
 </head>
 <body>
   
