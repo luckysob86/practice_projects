@@ -13,48 +13,66 @@
   <title>etch a sketch</title>
 </head>
 <body>
+    <button id='btn-clear-grid' type="button">Clear Grid</button>
 </body>
 </html>
 <style>
-div {
- border: 1px dotted green;
- padding: 10px;    
-}
-
 table{
-    border: 1px solid red;
+    border: 1px solid black;
 }
 
 tr {
-    height: 10px;
-    width: 10px;
+    height: 50px;
+    width: 50px;
+    background-color:gray;
+}
+
+td.hover{
+    background-color: black;    
+}
+
+td {
+    height: 50px;
+    width: 50px;
 }
 
 </style>
-<script type="text/script">
+<script type="text/javascript">
 var createGrid = function(num){
+    //create container div
     var div = document.createElement('div');
     div.id = 'div-container';
     document.getElementsByTagName('body')[0].appendChild(div);
-    
+    //create table within container
     var table = document.createElement('table');
     table.id = 'table-grid';
     div.appendChild(table);
     
     createCells(num);
-}
+};
 
 var createCells = function(num){
-
     for(var i = 0; i < num; i++){
-        var td = document.createElement('td');
         var tr = document.createElement('tr');
-        td.id = 'cell ' + i;
+        for(var j = 0; j < num; j++){
+            var td = document.createElement('td');
+            td.id = 'cell_' + j;
+            td.setAttribute("onmouseover", "this.className='hover';")
+            tr.appendChild(td);
+        }
         var target = document.getElementById('table-grid');
         target.appendChild(tr).appendChild(td);
     }
-
 }
 
-createGrid(16);
+var clearGrid = function(){
+    document.getElementById('table-grid').innerHTML = "";
+    var answer = prompt("Enter a number between 1 and 100");
+    if(answer >= 1 && answer < 100){
+        createGrid(answer);
+    }
+}
+
+window.onload = createGrid(16);
+document.getElementById('btn-clear-grid').onclick = clearGrid;
 </script>
